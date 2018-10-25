@@ -49,7 +49,7 @@ class UnitTest {
     }
 
     // @JvmOverloads : Java에서도 호출할 수 있게
-    // constructor 생략가
+    // constructor 생략가능
     class ClassTest @JvmOverloads constructor(val name: String, val age: Int) {
         //생성자에서 자동으로 불리는 function
         init {
@@ -84,6 +84,7 @@ class UnitTest {
     @Test
     fun dataClassTest() {
         var user = User()
+        user.id = 10
         println("user + $user")
     }
 
@@ -120,13 +121,13 @@ class UnitTest {
     @Test
     fun lambdaTest() {
         var btn: Button? = null
-        btn?.setOnClickListener()
-        {
+        btn?.setOnClickListener {
             Log.d("Sample", "view $it")
         }
+
     }
 
-    // Function variable, High Order Functions
+    // Function variable,
     var onclick: (position: Int, a : String) -> Unit = { position, a -> println("position $position $a")}
 
     @Test
@@ -134,6 +135,7 @@ class UnitTest {
         onclick.invoke(100, "functionVariable")
     }
 
+    // High Order Functions : 함수를 인자나 리턴값으로 사용하는 함
     fun highterOrder(body: (Int, Int) -> Int) = body(20,10)
     fun sum(a: Int, b: Int) = a + b
     fun minus(a: Int, b: Int) = a - b
