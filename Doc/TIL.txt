@@ -1,0 +1,14 @@
+2018. 10.26
+1. MVC, MVP, MVVM 차이점 및 특징
+https://academy.realm.io/kr/posts/eric-maxwell-mvc-mvp-and-mvvm-on-android/
+프로젝트에 따라 유용한 패턴이 상이하다. 규모에 따라 MVC < MVP <= MVVM
+수준이며 안드로이드에서는 MVP 모델을 선호
+- MVC에서는 Activity가 Controller 역할을 하며 View와 tight coupling 되어 있다.
+- MVP는 Activity가 View의 역할을 하며 Presenter와의 Communication을 담당한다. View에서 Presenter로,
+Presenter에서 View로 모두 interface를 통해 통신하므로 서로 의존성이 약하며, Unit Test에 용이
+- MVVM은 Data binding 기능을 통해서 View(xml)에서 ViewModel로 binding을 해두고, 값을 변경하면 Data binding 내부에서 알아서 update한다.
+완전히 View에 독립적인 구조를 가질 수 있어서, Unit test등이 용이 하다.
+
+2. Data binding
+http://gun0912.tistory.com/71
+XML과 코드를 연결하는데 있어 butter knife 보다도 매우 유용하다. 추가 학습 및 실습이 필요하다.
