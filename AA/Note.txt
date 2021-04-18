@@ -1,0 +1,266 @@
+--- Know How
+AA과정은 수수께끼를 풀어가는 과정이다. (강사가 무엇을 의도하는지) - 다 괜찮다고 하지만 생각하는 건 정해져있다.
+- 각 과목 강사와 평가자(대표, 교수)와 생각이 조금씩 다르다. 평가자가 중요하다고 생각하는 것에 집중해야한다.
+구현 설계서를 작성하는 것이다. - 요구사항 정의서가 따로 있기 때문에 구조설계시 중요하다고 여겨지는 use case
+
+선정된 과제에 대해 전문가는 아니더라고, 웹서핑을 통해 알수 있는 수준의 지식은 모두 알고있는 지식인은 되어야한다.
+
+QA를 잘 뽑아내고 후보구조를 깊게 생각해서 설계하고 각각의 Trade off를 잘 드러나게 해야한다.
+진짜로 구현할때 어떻게 할것인가, 깊고도 깊게 고민해야한다. 단순히 무슨 Pattern, Style을 쓰겠다고 하면...
+
+전체적으로 하나의 이해가 술술되는 술술 읽히는 문서를 만들어야..
+문서는 특별한 양식이 있는 것이 아니다, 그 장에서 설명해야하는 것들을 잘 설명하면된다.
+
+최적 개발을 위해 디테일, 디테일, 디테일에 신경 써라.
+
+나의 모든 개발 지식을 동원해서 소설을 쓰는 느낌이다...
+
+
+--- 강의 노트
+Component & Connector의 의미를 왜이리 강조하는지..
+Deployment가 중요하다. -> component를 정의해야.. 무슨 의도지?
+
+java, C Code를 기준으로 그림을 그려준다.?
+
+
+App에서의 Deployment Unit
+Device - Process - Thread
+
+App에서의 Component를 기술하면 그걸 Deployment로 보여준다.
+
+
+
+ADL을 정의 하는 것이 핵심이다!!!!!!!!!!!!!!!!!!!!!!!
+Component를 각 domain에 맞게 구성하라.
+Android의 각 Component & Connector를 정의할 수 있는 ADL를 만들고,
+이 ADL을 DOT으로 Translate해서 Graphviz로 보여줘야한다.
+1. Android Application 구조 설계를 위한 ADL를 정의한다.
+2. Android Application은 4가지 주요 Component 및 Thread까지를 주요 component로 정의한다.
+3. Connector는 UML의 관계와 동일하게 정의한다.
+4. ADL로 
+
+
+----------- 질문 List
+1. Use case에 user trigger가 있는 것만 기입이 되야하나.
+2. Use case에서 좀 더 자세히 작성을 하라고 하셨는데, 그 depth를 잘 모르겠다. Use case에서 실행측면의 모듈 단위까지 기입이 되야하는 것인지,
+이렇게 되면 나중에 QA에 따라 구조가 변경되게 되면 다시 변경된 모듈에 맞게 use case를 update하면 되는 것인지.
+-> 가능한 자세히 한다.
+
+
+3. 
+Android Application용 ADL Framework을 만드려고 하는데,
+ADL 정의를 Android Application의 주요 Component를 Component로 기술하고, 이를 통해서 C&C와 Deployment View를 Coding할 수 있게 하려한다.
+시스템은 Output Format과 ADL을 DOT Language로 변환하고 Graphviz를 통해 output을 받아 도구에 전달하는 기능을 수행하고,
+이정도로 시스템을 구성하면, FR, NFR, QA다 합쳐도 10개가 안될거 같은데 이정도 범위도 괜찮다고 생각하시는지.
+
+
+4. 
+ADL은 제가 정한 SPEC이 되는건데 이를 Use case diagram에 명시를 해야하는건지? 그렇다면 구조 설계자와 연결하면 되는지
+
+5. C&C와 Deployment 작성을 지원
+- . Android application 구조 설계를 위하는 상황이라면, Deployment view는 C&C의 결합적인 용도로 구성을 할 수 밖에 없을 듯한데 맞나?
+-. 그리고 하나의 ADL Code에서 여러개의 C&C를 view 전체를 감싸는 Deplyment View tag가 추가되면 그게 Deployment view가 될 것으로 생각되는데 맞나?
+
+6
+주요 Quality로 성능, 사용 편의성, 변경 용의성을 선정해서 Translate 성능에 주안점을 잡으려고 한다. 강사님도 이런 Translate 성능이 가장 중요한 ADL Framework의 Quality Attribute로 생각하시는지?
+Data를 어떻게 할것인가가 중요하다고 들었는데, 
+예를 들어서 작성해주신 ADL처럼 자체적인 문법을 정의하고 이게 DOT의 어떤 KEYWORD로 변경이 되는지에 대한 
+Table 같은 걸두고 변환을 어떻게 하는지를 상세히 기술하면 되죠?
+
+  6.1 다른 강의에서 단순히 빨라야한다고 적으면 기준이 없어서 안되고, 몇 초 이하, 이런식으로 기입이 되야한다고 했는데
+      이런 경우 구체적 수치가 있으니 NFR로도 기입을하고  빨라야한다는 Quality로 QA로도 기입이 되야할까요? 
+	  아니면 
+	  QA에 구체적인 수치와 빨라야한다 같이 명기하면될지
+
+7.
+ADL Framework은 쉽고 편하게 그릴수 있는 Tool이 필요하다는 Business Driver로 부터 시작한 것으로 생각되는데,
+그렇다면 쉽고 편하게 그릴 수 있다는 것은 ADL 정의를 보다 직관적이고 알기 쉽게해서 Coding을 쉽게 할 수 있다면 사용 편의성이 높다고 평가할 수 있을까요?
+
+8.
+변경 용의성으로 ADL 자체의 Component를 추가하는 기능을 넣으려고 하는데 이게 추가 기능으로 NFR이 아닌 Use case, Functional Requirement로 봐야할까요? 
+측정이 어려워서 추가가 가능해야한다는 제약사항으로 NFR로 넣으려고 하는데 괜찮을까요? 
+NFR에도 측정 항목이 있다. 이경우 추가한 Component가 정상동작한다를 측정 항목으로 잡아도 될까요?
+
+
+
+--- Feedback
+이게 정말 필요한가? 다른 기존 제품 대비 차이점이 무엇인가
+과제 범위를 어떻게 정해야하는가.
+환경, Business Driver
+C&C와 Deployment View를 같이 가져간다.
+language 변환을 실제 구체적으로 어떻게 할 것이냐.
+Compiler 기능처럼 동작해야한다.
+ADL
+ADL이 어떤 걸 명시할 수 있는지를 FR에 기입하라
+품질 속성 명기할때는 상세하게 쓰돼 System의 각 모듈을 명시하지마라.
+
+
+
+----- Idea
+Translate시에 dot로 변경을 하면서 실시간으로 Graph를 반환해줘서 사용자로 하여금 즉각 적인 반응을 느낄 수 있도록 한다.
+- 이것을 위해서 Pipe & Filter 방식을 적용한다.
+
+Component Type을 별도 Deploy unit으로 생성해서, Component type 추가시 별도의 Build가 필요하지 않도록 한다.
+Output Format도 별도 Deply unit으로 생성해서, Output Format type 추가시 별도의 Build가 필요하지 않도록 한다.
+
+
+ADL -> DOT : flex는 《fast lexical analyzer generator》 - Scanner
+
+컴파일 단계
+
+
+
+----- Prefinal 질문 list -----
+1. 
+review에서
+p.57 View Model로 나온 결과를 DOT로 변환하는 Renderer를 표현하려면 DOT Language에 대해서 해박하게 알아야 할듯한데,
+   dot에서 저렇게 구체적인 위치 수치로 지정해서 생성하는게 가능한지 모르겠다. 제가 일단 찾봤을때는 못찾았는데, 
+이런 View Model까지 만들어지면 사실 개발자가 변환할 수 있는 부분이라,
+이부분은 너무 detail하지 않게가도 괜찮냐? inout으로 view model을 주고 output으로 DOT Code가 나오는 정도로
+
+A. 품질에 영향을 끼칠 부분이 있는지 봐야한다. 단순 맵핑이면 대략적인 설명으려 충분
+
+
+2. 
+p.66 AppModel을 확장할 때 interface만 두고 library로 추가하도록 했을때 interface를 구체화하려면 이건 거의 API 수준이 될거 같다.
+getComponentArray()같은 식으로 Interface 상세를 기입하면 되는것인지
+
+
+A. 필요하다면
+
+
+preFinal 문서
+3. 
+P. 6 1. 지금 정도의 Use case로 충분한지? 지금 QA 5 + NFR 1개인데, 이걸 좀 더 후보구조 고민을 하려고 하는데, 객수가 중요한건 아니지만 너무 적은거 같은데 괜찮은지.
+A. 갯수는 중요치 않지만 중요한 품질이 빠지는게 있으면 안된다.
+
+
+4. 
+  Use case가 ADL Code를 작성한다이고, 선행조건으로 ADL이 정의해야하는 것을 넣었는데, 
+  이렇게 해도 되는지
+
+A. 이건 USE CASE가 아니다. 요구사항으로 명세하면 된다.  
+  
+
+5. 
+p. 24 ADL 작성의 편의성이란 QA로 
+   후보구조에서 adl에 대한 정의를 설명하고 있는데,  ADL Description이 최종적으로 어느 위치가 좋은가?
+
+6. 
+P.39 변경 용이성의 후보구조라는게, 결과적으로는 Strategy pattern을 두고 interface를 상세히 명세하는 정도인거 같다.
+Strategy patten을 Bridge pattern으로 변경하고 하는게 후보구조가 될 수 있나? 
+
+A. 가장 기본적인 구조이다. 하지만 이런구조를 구현한다고했을때 100이면 100 다른 결과가 나올것이다. 이 과정에서 발생할 수 있는 중요한 품질에 영향을끼치는 요소를 검토해야한다.
+interface를 어떻게 가져가냐에 따라 품질에 차이가 발생할 수 있다.
+
+
+7. 
+P. 45 위험요인에 대한 효과가 미미해서 완화 방안이 특별이 없다고 기술했는데, 이런경우 영향이 미미하니 평가표자체에서 뺄까요?
+
+8. 
+P.45 2. ADL Code 작성 편의성은
+후보구조로 신규 ADL을 만들거나, XML, JSON 기존 언어를 가져다 쓰는 거로 후보구조를 넣었는데, 저는 이거 충분히 고려해야할만한 후보구조로 생각이 되는데,
+의미 없다고 Comment를 주셔서, 사실 제가 나름 정의를 하긴 했지만 xml로 작성하는게 더 익술할 수 있어서 편의성이 높을수도 있다는 생각을 많이 했습니다.
+적성 편의성, 즉 ADL을 정의하는데 있어서 다른 후보구조가 있을수 있을까요? 
+
+A. 어짜피 채택하지 않을걸 후보구조로 넣을 필요가 없다. - xml로 사용하는 것을 많이 고민했다.
+   XML은 사람이 보기에 좋지 않다. 수박 겉핥기 식의 접근은 좋지 않다. 
+   다양한 Solution이 나올 수 있다. -> ADL Definition에 대해 좀 더 다양한 방법 고려 필요.
+
+
+9. 
+p. 51 Layered Architecture에 대한 후보구조라는게 어찌보면 당연한거라서 후보구조 검토가 필요한것인지, Quality Attribute도 없는 부분이라.
+
+10.
+P. 51 3. 
+Star UML에서는 그냥 사각형이 표현이 안돼서 Package로 Module view 표현해도 되는가?
+A. 4+1 View에서의 Logical View는 Domain model 수준이다. 최종 구조 설계에서는 Deployment, C&C 관점에서 명시를 하는 것이 좋을듯.  - 관계가 명시되지 않았다.
+
+
+
+
+						P.46 구체적으로 후보구조 에서 설명을 했는데(P. 30) 평가에서는 선정이된 이유정도를 설명하고,
+						후보구조 평가에서도 후보구조에서처럼 자세하게 설명을 해야하는지.  중복일듯.
+
+						P.48 Component type을 System에 Interface를 두고 별도 library로 연결하는 구조와 하나의 System안에서 Strategy 기법이나, Decoration 기법으로 하는 것 
+						이라 서로 경쟁하는 구조로 생각을 했습니다.  
+
+
+						View Type중에 대표님은 
+						Component & Connector view, Deployment view, Module view, Work Assignment View를 설명해주셨고,
+						저희 과정중에 아키텍처 설계 과정에서는 4+ 1 view
+						Logical View, Process View, Implementtation View, Deployment View
+						를 설명해주셨는데요,
+						제가 Logical View를 F. 최종 구조 설계에 넣었는데,
+						"Logical view"의 의미는 무엇인가요? 라고 Comment를 주셨습니다.
+						이게 Logical view 자체가 무슨 의미인지를 물어보신것인지 Logical view로 어떤 걸 표현한것인지에 대한 질문이신지 모르겠습니다.
+
+
+
+
+--- Final에 추가할것들..
+1. Component Type Interface 구체화 - iOS, Windows, Other -> AppModel로 이름 변경
+ - IComponent Type - 
+2. Dot Mapping Table
+3. Layout Engine
+4. Graphic interface 다변화 추가  (DOT, CGraph, SVG)
+5. Layered architecture 를 후보구조로
+6. 3,4는 TOP - DOWN
+
+
+GDL - 
+DOT - Graphviz
+Cypher - Neo4j
+aiSee - AbsInt
+ 
+
+
+
+B. 품질 시나리오를 어떻게 생성했는지를 설명하는게 중요하다. 일반적으로는 품질 시나리오가 도출된 이유, 
+C. 왜 이런 품질 요구사항이 선정되었는지 설명
+E. 는 채택 여부가 명확하게 그리고 설명도
+f. E가 채택되서 이런 모양이 됐다. Deployment & Module
+
+
+3. 시스템구조
+- 개요로 Tier 설명
+- Deployment 로 전체 흐름 설명하고, Component & Connector 로 전체 시스템 동작시 구조를 설명
+- 각 동작에 대한 구체적인 flow를 설명한다. 시퀀스 & Component & connector
+- 시스템 특성으로 구조상의 강점을 설명한다. 
+- Risk를 간략히 언급한다.
+
+
+// 활동8. 구조 명세
+// 점검8-1. 프로세스 등의 Allocation이 적절한가?
+// 점검8-2. 컴포넌트 측면에서 Grouping이 적절한가?
+// 점검8-3. 시스템의 동작 특성에 대한 설명이 적절한가?
+
+
+
+4. 모듈사양
+- Module View로 전체 모듈을 설명하고,
+- 각 모듈에 대해서 Class Diagram으로 설명한다.
+- 세부 모듈 사이의 interface를 설명한다.
+- WorkAssignment를 기술한다.
+
+// 활동9. 모듈 명세
+// 점검9-1. 컴포넌트 명세가 충분한가? (개발 가능)
+// 점검9-2. 모듈 측면에서 Grouping이 적절한가?
+// 점검9-3. Work Assignment가 적절한가?
+// 점검9-4. 개발 측면에서 구조적 특징에 대한 설명이 적절한가?
+
+
+
+
+---- 면접
+본인이 설계에 대한 요약 설명 1~2분 : 내가 생각하는 중요한 차별화된 요소 중심으로 설명
+QA
+왜 이 CA를 선택했냐 다른 대안이 있을거 같은데.
+Architect면 이정도는 알아야돼, 라는 생각으로 질문이 들어오기도 한다.
+ex) component가 무엇인지 설명해달라, Module은?  Adapter patten은? OCP?, Layered Architecture는?
+-> 아는대로 아는걸 잘 설명해라, 엉뚱한 대답하면 시간을 까먹는다. 그냥 모르면 모른다고 하자.
+내가 적용한거는 보다 면밀하게 알아야한다.
+오전에는 좀 더 디테일한 설명이 필요하고, 오후에는 대충 알게되니 중요한 부분만 설명하라.
+
+
+010 3351 3231
